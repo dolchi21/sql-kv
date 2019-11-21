@@ -36,7 +36,7 @@ export async function set(knex: Knex, key: string, value: string, options: SetOp
     ex && params.push('@ex=:ex')
     nx && params.push('@nx=:nx')
 
-    let sql = 'exec KeyValue_GET ' + params.join(',')
+    let sql = 'exec KeyValue_SET ' + params.join(',')
 
     const qb = knex.raw<SetResponse[]>(sql, {
         key,
