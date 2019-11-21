@@ -44,5 +44,5 @@ export async function set(knex: Knex, key: string, value: string, options: SetOp
         ex, nx
     })
     const [row] = await qb
-    return row.reply
+    return row.reply === 1
 }
