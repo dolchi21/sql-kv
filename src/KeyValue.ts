@@ -1,5 +1,5 @@
 import * as Knex from 'knex'
-import * as KV from './index'
+import * as KV from './lib'
 
 export default class KeyValue {
     knex: Knex
