@@ -20,7 +20,7 @@ async function testSet() {
 
 async function testKeyValue() {
     const kv = new KeyValue(knex)
-    await kv.set('ACT:UpdateInterval', '30')
+    await kv.set('ACT:UpdateInterval', 30)
     const ui = await kv.get('ACT:UpdateInterval')
     if (ui !== '30') throw new Error
 }
