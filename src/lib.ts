@@ -22,7 +22,7 @@ export async function get(knex: Knex, key: string) {
 
 export interface SetOptions {
     ex?: number,
-    nx?: boolean,
+    nx?: boolean | 0 | 1,
 }
 export async function set(knex: Knex, key: string, value: any, options: SetOptions = {}) {
     const { ex, nx } = options
