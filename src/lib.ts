@@ -1,15 +1,10 @@
 import * as Knex from 'knex'
 
-type Bit = 0 | 1
-
 interface GetResponse {
     reply: string
 }
 interface DeleteResponse {
     reply: number
-}
-interface SetResponse {
-    reply: Bit
 }
 
 export async function del(knex: Knex, key: string) {
@@ -27,9 +22,9 @@ export async function get(knex: Knex, key: string) {
 
 export interface SetOptions {
     ex?: number,
-    nx?: boolean | Bit,
+    nx?: boolean,
 }
-export async function set(knex: Knex, key: string, value: string, options: SetOptions = {}) {
+export async function set(knex: Knex, key: string, value: any, options: SetOptions = {}) {
     const { ex, nx } = options
 
     const params = ['@key=:key', '@value=:value']
@@ -38,7 +33,7 @@ export async function set(knex: Knex, key: string, value: string, options: SetOp
 
     let sql = 'exec KeyValue_SET ' + params.join(',')
 
-    const qb = knex.raw<SetResponse[]>(sql, {
+    const qb = knex.raw(sql, {
         key,
         value,
         ex, nx
