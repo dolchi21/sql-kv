@@ -9,7 +9,7 @@ export default class KeyValue {
     get(key: string) {
         return KV.get(this.knex, key)
     }
-    set(key: string, value: string, options: KV.SetOptions = {}) {
+    set(key: string, value: any, options: KV.SetOptions = {}) {
         return KV.set(this.knex, key, value, options)
     }
     constructor(knex: Knex) {
